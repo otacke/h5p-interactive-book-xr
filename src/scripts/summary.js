@@ -336,7 +336,10 @@ class Summary extends H5P.EventDispatcher {
       };
       wrapper.appendChild(submitButton);
     }
-    wrapper.appendChild(this.createRestartButton());
+
+    if (this.behaviour.enableRetry) {
+      wrapper.appendChild(this.createRestartButton());
+    }
     wrapper.appendChild(this.createSubmittedConfirmation());
 
     this.wrapper.appendChild(wrapper);
@@ -372,7 +375,9 @@ class Summary extends H5P.EventDispatcher {
     text.classList.add('answers-submitted');
     submittedContainer.appendChild(text);
 
-    submittedContainer.appendChild(this.createRestartButton());
+    if (this.behaviour.enableRetry) {
+      submittedContainer.appendChild(this.createRestartButton());
+    }
 
     return submittedContainer;
   }

@@ -13,7 +13,7 @@
         },
         {
           "label": "Portadarako euskarria",
-          "description": "Aurkezpenerako aukerako euskarriak."
+          "description": "Azalean bistaratzeko aukerako euskarriak"
         }
       ]
     },
@@ -57,6 +57,10 @@
         {
           "label": "Erakutsi laburpena",
           "description": "Gaituz gero erabiltzaileak laburpen bat ikusi eta aurrerapena/erantzunako bidali ditzake"
+        },
+        {
+          "label": "Gaitu \"Berrabiarazi\" botoia",
+          "description": "Gaituta dagoenean, erabiltzaileak laburpen orrian berrabiarazi dezake."
         }
       ]
     },

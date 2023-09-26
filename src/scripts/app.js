@@ -155,9 +155,6 @@ export default class InteractiveBook extends H5P.EventDispatcher {
     this.resetTask = () => {
       if (this.hasValidChapters()) {
         this.chapters.forEach((chapter, index) => {
-          if (!chapter.isInitialized || chapter.isSummary) {
-            return;
-          }
           if (typeof chapter.instance.resetTask === 'function') {
             chapter.instance.resetTask();
           }
@@ -171,7 +168,10 @@ export default class InteractiveBook extends H5P.EventDispatcher {
         this.pageContent.resetChapters();
         this.sideBar.resetIndicators();
 
-        this.trigger('newChapter', {
+        /** Prevent auto-redirecting after starting over. */
+        this.hashWindow.location.hash = '';
+
+        this.redirectChapter({
           h5pbookid: this.contentId,
           chapter: this.pageContent.columnNodes[0].id,
           section: "top",
@@ -181,15 +181,6 @@ export default class InteractiveBook extends H5P.EventDispatcher {
           this.displayCover(this.mainWrapper);
         }
         this.isAnswerUpdated = false;
-
-        /** Prevent auto-redirecting after starting over. */
-        try {
-          window.location.hash = '';
-          top.location.hash = '';
-        }
-        catch {
-          // not allowed to write top.location when using LTI
-        }
       }
     };
 
@@ -264,10 +255,15 @@ export default class InteractiveBook extends H5P.EventDispatcher {
           state: chapter.instance.getCurrentState() || null
         }));
 
-      return {
+      const currentState = {
         urlFragments: URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
-        chapters: chapters,
+        chapters: chapters
       };
+      if (this.getAnswerGiven()) {
+        currentState.score = this.getScore();
+        currentState.maxScore = this.getMaxScore();
+      }
+      return currentState;
     };
 
     /*

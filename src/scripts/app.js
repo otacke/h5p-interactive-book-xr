@@ -259,7 +259,7 @@ export default class InteractiveBook extends H5P.EventDispatcher {
         urlFragments: URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
         chapters: chapters
       };
-      if (this.getAnswerGiven()) {
+      if (!!this.getAnswerGiven()) {
         currentState.score = this.getScore();
         currentState.maxScore = this.getMaxScore();
       }

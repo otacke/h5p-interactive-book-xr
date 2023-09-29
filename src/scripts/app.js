@@ -264,7 +264,7 @@ export default class InteractiveBook extends H5P.EventDispatcher {
         }));
 
       const currentState = {
-        urlFragments: !this.hashWindow.location.hash && this.previousState.urlFragments ? this.previousState.urlFragments : URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
+        urlFragments: !this.hashWindow.location.hash && this.previousState?.urlFragments ? this.previousState.urlFragments : URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
         chapters: chapters
       };
       if (this.getAnswerGiven()) {

@@ -302,9 +302,9 @@ class PageContent extends H5P.EventDispatcher {
         // Chapter requested does not exist - do nothing, so that the cover page or first chapter (0 by default) is displayed.
         return 0;
       }
-    
+
       this.parent.setActiveChapter(chapterIndex);
-    
+
       if (urlFragments.section) {
         const headerNumber = urlFragments.headerNumber;
         setTimeout(() => {
@@ -314,7 +314,7 @@ class PageContent extends H5P.EventDispatcher {
           }
         }, 1000);
       }
-    
+
       return chapterIndex;
     }
 

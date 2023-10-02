@@ -183,10 +183,7 @@ class PageContent extends H5P.EventDispatcher {
       this.injectSectionId(chapter.sections, columnNode);
 
       if (this.behaviour.progressIndicators && !this.behaviour.progressAuto) {
-        const checked = (this.previousState) ?
-          this.previousState.chapters[chapterIndex].completed :
-          false;
-        columnNode.appendChild(this.createChapterReadCheckbox(checked));
+        columnNode.appendChild(this.createChapterReadCheckbox(!!this.previousState?.chapters?.[chapterIndex].completed));
       }
 
       chapter.isInitialized = true;

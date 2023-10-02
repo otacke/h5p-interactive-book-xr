@@ -183,10 +183,7 @@ class PageContent extends H5P.EventDispatcher {
       this.injectSectionId(chapter.sections, columnNode);
 
       if (this.behaviour.progressIndicators && !this.behaviour.progressAuto) {
-        const checked = (this.previousState) ?
-          this.previousState.chapters[chapterIndex].completed :
-          false;
-        columnNode.appendChild(this.createChapterReadCheckbox(checked));
+        columnNode.appendChild(this.createChapterReadCheckbox(!!this.previousState?.chapters?.[chapterIndex].completed));
       }
 
       chapter.isInitialized = true;
@@ -305,9 +302,9 @@ class PageContent extends H5P.EventDispatcher {
         // Chapter requested does not exist - do nothing, so that the cover page or first chapter (0 by default) is displayed.
         return 0;
       }
-    
+
       this.parent.setActiveChapter(chapterIndex);
-    
+
       if (urlFragments.section) {
         const headerNumber = urlFragments.headerNumber;
         setTimeout(() => {
@@ -317,7 +314,7 @@ class PageContent extends H5P.EventDispatcher {
           }
         }, 1000);
       }
-    
+
       return chapterIndex;
     }
 

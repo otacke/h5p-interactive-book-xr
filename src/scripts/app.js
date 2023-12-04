@@ -153,34 +153,42 @@ export default class InteractiveBook extends H5P.EventDispatcher {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      if ( this.hasValidChapters()) {
+      if (this.hasValidChapters()) {
         this.chapters.forEach((chapter, index) => {
-          if (!chapter.isInitialized || chapter.isSummary) {
-            return;
-          }
           if (typeof chapter.instance.resetTask === 'function') {
             chapter.instance.resetTask();
           }
+          chapter.completed = false;
           chapter.tasksLeft = chapter.maxTasks;
           chapter.sections.forEach(section => section.taskDone = false);
           this.setChapterRead(index, false);
         });
 
-        // Force reset activity start time
-        this.setActivityStarted(true);
-        this.pageContent.resetChapters();
-        this.sideBar.resetIndicators();
+        // Clean up previous state to avoid fallback in getCurrentState()
+        for (const state in this.previousState) {
+          delete this.previousState[state];
+        }
 
-        this.trigger('newChapter', {
+        /** Prevent auto-redirecting after starting over. */
+        this.hashWindow.location.hash = '';
+
+        const activeChapter = this.getActiveChapter();
+        this.redirectChapter({
           h5pbookid: this.contentId,
           chapter: this.pageContent.columnNodes[0].id,
           section: "top",
         });
+        this.chapters[activeChapter].completed = false; // Cleanup after redirect in case of autoprogress
 
-        if ( this.hasCover()) {
+        if (this.hasCover()) {
           this.displayCover(this.mainWrapper);
         }
         this.isAnswerUpdated = false;
+
+        // Force reset activity start time
+        this.setActivityStarted(true);
+        this.pageContent.resetChapters();
+        this.sideBar.resetIndicators();
       }
     };
 
@@ -250,17 +258,20 @@ export default class InteractiveBook extends H5P.EventDispatcher {
       const chapters = this.chapters
         .filter(chapter => !chapter.isSummary)
         .map(chapter => ({
-          completed: chapter.completed,
-          sections: chapter.sections.map(section => ({taskDone: section.taskDone})),
-          state: chapter.instance.getCurrentState()
+          completed: chapter.completed || null,
+          sections: chapter.sections.map(section => ({taskDone: section.taskDone || null})),
+          state: chapter.instance.getCurrentState() || null
         }));
 
-      return {
-        urlFragments: URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
-        chapters: chapters,
-        score: this.getScore(),
-        maxScore: this.getMaxScore()
+      const currentState = {
+        urlFragments: !this.hashWindow.location.hash && this.previousState?.urlFragments ? this.previousState.urlFragments : URLTools.extractFragmentsFromURL(this.validateFragments, this.hashWindow),
+        chapters: chapters
       };
+      if (this.activeChapter > 0) {
+        currentState.score = this.getScore();
+        currentState.maxScore = this.getMaxScore();
+      }
+      return currentState;
     };
 
     /*
@@ -735,7 +746,13 @@ export default class InteractiveBook extends H5P.EventDispatcher {
       const isInitialized = self.chapters.length;
 
       if (self !== this && isActionVerb && isInitialized) {
-        self.setSectionStatusByID(this.subContentId || this.contentData.subContentId, self.activeChapter);
+        const sectionUUID = this.subContentId || this.contentData?.subContentId;
+
+        if (!sectionUUID) {
+          return;
+        }
+
+        self.setSectionStatusByID(sectionUUID, self.activeChapter);
       }
     });
 

@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Grundfärg",
-          "description": "Ange grundfärgen som kommer att definiera det övergripande färgschemat på boken. Försök försäkra dig om tillräckligt hög kontrast.",
-          "default": "#1768c4"
+          "description": "Ange grundfärgen som kommer att definiera det övergripande färgschemat på boken. Försök försäkra dig om tillräckligt hög kontrast."
         },
         {
           "label": "Visa innehållsförteckning som standard",

@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Cor base",
-          "description": "Defina a cor base que definirá o esquema geral de cores do livro. Certifique-se de um contraste alto o suficiente.",
-          "default": "#1768c4"
+          "description": "Defina a cor base que definirá o esquema geral de cores do livro. Certifique-se de um contraste alto o suficiente."
         },
         {
           "label": "Exibir Estrutura de Tópicos como padrão",

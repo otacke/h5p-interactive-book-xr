@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Color base",
-          "description": "Configura el color base que definirá el esquema general de color del libro. Por favor asegúrate de usar un contraste lo suficientemente alto.",
-          "default": "#1768c4"
+          "description": "Configura el color base que definirá el esquema general de color del libro. Por favor asegúrate de usar un contraste lo suficientemente alto."
         },
         {
           "label": "Mostrar tabla de contenidos como configuración predeterminada",

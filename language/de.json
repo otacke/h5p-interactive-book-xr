@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Basisfarbe",
-          "description": "Setze die Basisfarbe für das Farbschema im Buch. Bitte denke an einen ausreichend hohen Kontrast.",
-          "default": "#1768c4"
+          "description": "Setze die Basisfarbe für das Farbschema im Buch. Bitte denke an einen ausreichend hohen Kontrast."
         },
         {
           "label": "Standardmäßig Inhaltsverzeichnis anzeigen",

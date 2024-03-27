@@ -861,7 +861,8 @@ export default class InteractiveBook extends H5P.EventDispatcher {
       }
 
       this.setWrapperClassFromRatio(this.mainWrapper);
-      if (this.cover) {
+
+      if (this.cover && this.shouldShowCover) {
         this.displayCover($wrapper);
       }
 
@@ -925,6 +926,19 @@ export default class InteractiveBook extends H5P.EventDispatcher {
       }
     };
 
+    /*
+     * Cover page shound not be shown if the previous state provides a chapter
+     * that was previously opened or if user provided a chapter in URL
+     */
+    const urlFragments = URLTools.extractFragmentsFromURL(
+      this.validateFragments, this.hashWindow
+      );
+
+    this.shouldShowCover = this.params.showCoverPage &&
+      !(
+        urlFragments.chapter || contentData.previousState?.urlFragments?.chapter
+      );
+
     // Initialize the support components
     if (this.params.showCoverPage) {
       this.cover = new Cover(this.params.bookCover, contentData.metadata.title, this.l10n.read, contentId, this);
@@ -970,6 +984,16 @@ export default class InteractiveBook extends H5P.EventDispatcher {
 
       this.on('coverRemoved', () => {
         this.hideAllElements(false);
+
+        // Ensure that URL is updated, so getCurrentState will resume without showing cover
+        if (this.params.chapters[this.activeChapter]?.subContentId) {
+          this.trigger('newChapter', {
+            h5pbookid: this.contentId,
+            chapter: `h5p-interactive-book-chapter-${this.params.chapters[this.activeChapter].subContentId}`,
+            section: 0
+          });
+        }
+
         this.trigger('resize');
         // This will happen also on retry, but that doesn't matter, since
         // setActivityStarted() checks if it has been run before

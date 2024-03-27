@@ -307,12 +307,12 @@ class PageContent extends H5P.EventDispatcher {
 
       if (urlFragments.section) {
         const headerNumber = urlFragments.headerNumber;
-        setTimeout(() => {
+        window.requestAnimationFrame(() => {
           this.redirectSection(urlFragments.section, headerNumber);
           if (this.parent.hasCover()) {
             this.parent.cover.removeCover();
           }
-        }, 1000);
+        });
       }
 
       return chapterIndex;

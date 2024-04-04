@@ -438,6 +438,19 @@ export default class InteractiveBook extends H5P.EventDispatcher {
           setTimeout(() => {
             this.trigger('resize');
           }, 10);
+
+          /*
+           * H5P content may using H5P.Question and hide all buttons, but H5P.
+           * Question doesn't trigger a `resize` even though the buttons
+           * sections got emptied. This could be changed in H5P.Question, but
+           * then we might get a lot of resize events.
+           * Enforcing one extra resize here if the page content height changed.
+           * @see HFP-3913.
+           */
+          window.clearTimeout(this.extraResizeTimeout);
+          this.extraResizeTimeout = window.setTimeout(() => {
+            this.trigger('resize');
+          }, 200); // Transition time of H5P.Question hiding buttons: 150ms
         }
       }
     };

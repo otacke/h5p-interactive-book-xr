@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Rangi ya msingi",
-          "description": "Weka rangi ya msingi ambayo itafafanua mpango wa jumla wa rangi ya kitabu. Tafadhali hakikisha kuna utofautishaji wa juu wa kutosha.",
-          "default": "# 1768c4"
+          "description": "Weka rangi ya msingi ambayo itafafanua mpango wa jumla wa rangi ya kitabu. Tafadhali hakikisha kuna utofautishaji wa juu wa kutosha."
         },
         {
           "label": "Onyesha jedwali la yaliyomo kama chaguo-msingi",

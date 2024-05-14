@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Osnovna barva",
-          "description": "Določitev osnovne barve za celotno barvno shemo knjige. Zagotovite dovolj visok kontrast.",
-          "default": "#006a8e"
+          "description": "Določitev osnovne barve za celotno barvno shemo knjige. Zagotovite dovolj visok kontrast."
         },
         {
           "label": "Kazalo vsebin prikaži privzeto",

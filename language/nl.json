@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Basiskleur",
-          "description": "Stel de basiskleur in die het kleurenschema van het boek bepaalt. Let er op dat je voor een hoog contrast kiest.",
-          "default": "#1768c4"
+          "description": "Stel de basiskleur in die het kleurenschema van het boek bepaalt. Let er op dat je voor een hoog contrast kiest."
         },
         {
           "label": "Toon standaard de inhoudsopgave",

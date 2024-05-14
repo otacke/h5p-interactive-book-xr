@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Màu cơ bản",
-          "description": "Đặt màu cơ bản sẽ xác định bảng màu tổng thể của cuốn sách. Vui lòng đảm bảo độ tương phản đủ cao.",
-          "default": "#1768c4"
+          "description": "Đặt màu cơ bản sẽ xác định bảng màu tổng thể của cuốn sách. Vui lòng đảm bảo độ tương phản đủ cao."
         },
         {
           "label": "Hiển thị mục lục theo mặc định",

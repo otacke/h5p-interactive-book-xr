@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Bazinė spalva",
-          "description": "Nustatykite pagrindinę spalvą, kuri nurodys bendrą knygos spalvų schemą. Užtikrinkite pakankamai didelį kontrastą.",
-          "default": "#1768c4"
+          "description": "Nustatykite pagrindinę spalvą, kuri nurodys bendrą knygos spalvų schemą. Užtikrinkite pakankamai didelį kontrastą."
         },
         {
           "label": "Rodyti Turinį kaip numatyta",

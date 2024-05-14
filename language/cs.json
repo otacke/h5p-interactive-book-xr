@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Základní barva",
-          "description": "Zvolte základní barvu pro barevné schéma knihy. Prosím, ujistěte se, že máte nastaven dostatečný kontrast.",
-          "default": "#1768c4"
+          "description": "Zvolte základní barvu pro barevné schéma knihy. Prosím, ujistěte se, že máte nastaven dostatečný kontrast."
         },
         {
           "label": "Zobrazit obsah jako výchozí",

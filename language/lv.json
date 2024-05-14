@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Pamata krāsa",
-          "description": "Iestatiet pamatkrāsu, kas noteiks grāmatas kopējo krāsu shēmu. Lūdzu, nodrošiniet pietiekami augstu kontrastu.",
-          "default": "#1768c4"
+          "description": "Iestatiet pamatkrāsu, kas noteiks grāmatas kopējo krāsu shēmu. Lūdzu, nodrošiniet pietiekami augstu kontrastu."
         },
         {
           "label": "Pēc noklusējuma rādīt satura rādītāju",

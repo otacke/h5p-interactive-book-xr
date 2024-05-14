@@ -39,8 +39,7 @@
       "fields": [
         {
           "label": "Oinarrizko kolorea",
-          "description": "Ezarri liburuaren kolore-eskema orokorra definituko duen oinarrizko kolorea. Mesedez, ziurtatu nahikoa kontraste altua.",
-          "default": "#1768c4"
+          "description": "Ezarri liburuaren kolore-eskema orokorra definituko duen oinarrizko kolorea. Mesedez, ziurtatu nahikoa kontraste altua."
         },
         {
           "label": "Erakutsi eduki-taula modu lehenetsian",

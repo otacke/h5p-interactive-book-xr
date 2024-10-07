@@ -93,7 +93,7 @@ H5PUpgrades['H5P.InteractiveBook'] = (function () {
 
         finished(null, parameters, extras);
       },
-      8: function (parameters, finished, extras) {
+      11: function (parameters, finished, extras) {
         const tables = parameters.bookCover.coverDescription.split('<table');
         let newParams = tables[0];
 

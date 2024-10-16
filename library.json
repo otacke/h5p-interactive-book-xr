@@ -3,7 +3,7 @@
   "description": "An interactive book which displays content in pages and sections",
   "majorVersion": 1,
   "minorVersion": 11,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "fullscreen": 1,
   "coreApi": {
@@ -31,11 +31,6 @@
       "machineName": "FontAwesome",
       "majorVersion": 4,
       "minorVersion": 5
-    },
-    {
-      "machineName": "H5P.Column",
-      "majorVersion": 1,
-      "minorVersion": 17
     },
     {
       "machineName": "H5P.JoubelUI",

@@ -6,7 +6,7 @@ import PageContent from './pagecontent';
 import 'element-scroll-polyfill';
 import Colors from './colors';
 
-export default class InteractiveBook extends H5P.EventDispatcher {
+export default class InteractiveBookXR extends H5P.EventDispatcher {
   /**
    * @constructor
    *
@@ -42,7 +42,7 @@ export default class InteractiveBook extends H5P.EventDispatcher {
 
     this.completed = false;
 
-    this.params = InteractiveBook.sanitizeConfig(config);
+    this.params = InteractiveBookXR.sanitizeConfig(config);
     this.l10n = this.params.l10n;
     this.params.behaviour = this.params.behaviour || {};
     this.mainWrapper = null;
@@ -484,7 +484,7 @@ export default class InteractiveBook extends H5P.EventDispatcher {
         const container = this.pageContent.container;
         container.scrollBy(0, -container.scrollHeight);
       }
-      else if (H5PIntegration.context !== 'lti') { // Will be changed in JI-6581 to not use H5PIntegration 
+      else if (H5PIntegration.context !== 'lti') { // Will be changed in JI-6581 to not use H5PIntegration
         this.statusBarHeader.wrapper.scrollIntoView(true);
       }
     });
@@ -1013,7 +1013,7 @@ export default class InteractiveBook extends H5P.EventDispatcher {
         this.setActivityStarted();
 
         // Focus header progress bar when cover is removed
-        // Will be changed in JI-6581 to not use H5PIntegration 
+        // Will be changed in JI-6581 to not use H5PIntegration
         if (H5PIntegration.context !== 'lti') {
           this.statusBarHeader.progressBar.progress.focus();
         }

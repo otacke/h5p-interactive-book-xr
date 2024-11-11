@@ -1,6 +1,6 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.InteractiveBook'] = (function () {
+H5PUpgrades['H5P.InteractiveBookXR'] = (function () {
   return {
     1: {
       /**
@@ -81,7 +81,7 @@ H5PUpgrades['H5P.InteractiveBook'] = (function () {
           delete bookCover.coverImage;
           delete bookCover.coverAltText;
         }
-        
+
         if (parameters && parameters.bookCover && parameters.bookCover.coverDescription) {
           if (parameters.bookCover.coverDescription.substr(0, 2) !== '<p') {
             parameters.bookCover.coverDescription = '<p style="text-align: center;">' + parameters.bookCover.coverDescription + '</p>'; // was plain text
@@ -195,7 +195,7 @@ H5PUpgrades['H5P.InteractiveBook'] = (function () {
 
           parameters.bookCover.coverDescription = newParams;
         }
-        
+
         finished(null, parameters, extras);
       }
     }
